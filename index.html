@@ -6,23 +6,24 @@
   <title>پلتفرم مطالعات اجتماعی | Social Studies Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
   <style>
     :root {
       --bg: #f5f7fa;
       --surface: #ffffff;
       --surface-alt: #eef2f6;
       --text: #14202c;
-      --muted: #58697a;
       --primary: #0f4c81;
-      --primary-hover: #09355c;
+      --primary-hover: #163a5f;
+      --muted: #58697a;
       --accent: #0d9488;
       --border: #dce3ec;
       --success: #15803d;
       --radius: 14px;
       --shadow: 0 8px 24px rgba(15, 76, 129, 0.06);
-      --font-fa: "Vazirmatn", system-ui, sans-serif;
-      --font-en: "Inter", system-ui, sans-serif;
+      --font-fa: "Vazirmatn", "system-ui", sans-serif;
+      --font-en: "Inter", "system-ui", sans-serif;
     }
 
     html[lang="fa"] body { font-family: var(--font-fa); font-size: 15px; }
@@ -30,121 +31,56 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 20px; }
 
-    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 14px 0;
-      flex-wrap: wrap;
-    }
-
+    header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 40; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 0; flex-wrap: wrap; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.12rem; color: var(--primary); }
     .brand-badge { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 6px 10px; border-radius: 10px; font-size: 0.85rem; }
-
     .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
+    
     button, input, select, textarea { font-family: inherit; }
-
-    .btn {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      padding: 8px 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
+    .btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 8px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; text-decoration: none; display: inline-block; }
     .btn:hover { border-color: var(--primary); color: var(--primary); }
     .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
     .btn-primary:hover { background: var(--primary-hover); color: #fff; }
     .btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
 
     .nav-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; }
-    .nav-tab {
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      padding: 9px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.92rem;
-      white-space: nowrap;
-    }
+    .nav-tab { border: none; background: transparent; color: var(--muted); padding: 9px 15px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.92rem; white-space: nowrap; }
     .nav-tab:hover { background: var(--surface-alt); color: var(--text); }
     .nav-tab.active { background: var(--primary); color: #fff; }
 
-    .hero {
-      margin: 22px 0;
-      background: linear-gradient(120deg, #0f4c81 0%, #163a5f 65%, #0d9488 100%);
-      color: #fff;
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
+    .hero { margin: 22px 0; background: linear-gradient(120deg, #0f4c81 0%, #163a5f 65%, #0d9488 100%); color: #fff; border-radius: 20px; padding: 28px; box-shadow: var(--shadow); }
     .hero h1 { font-size: 1.75rem; line-height: 1.35; margin-bottom: 10px; }
     .hero p { opacity: 0.93; margin-bottom: 16px; max-width: 820px; }
-
+    
     .section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 14px; flex-wrap: wrap; }
     .section-title { font-size: 1.25rem; font-weight: 800; }
-
     .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
     .input, select, textarea { border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 9px 12px; border-radius: 10px; font-size: 0.92rem; }
-
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; margin-bottom: 30px; }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
     .tag { background: var(--surface-alt); color: var(--primary); padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; }
     .tag-comm { background: #e6fffa; color: #0f766e; }
     .price { font-weight: 800; color: var(--accent); font-size: 0.95rem; }
     .card h3 { font-size: 1.05rem; line-height: 1.45; }
-    .card p { color: var(--muted); font-size: 0.9rem; }
-
     .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--surface-alt); padding-top: 12px; }
-
+    
     .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 24px; }
-
     .modal-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 60; }
-    .modal-backdrop.open { display: flex; }
+    .modal-backdrop.opened { display: flex; }
     .modal { background: var(--surface); border-radius: 18px; max-width: 480px; width: 100%; padding: 24px; }
-    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
-
+    .modal-action { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
     .toast { position: fixed; bottom: 20px; inset-inline-end: 20px; background: var(--text); color: #fff; padding: 12px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; display: none; z-index: 70; }
     .toast.show { display: block; }
-
     footer { border-top: 1px solid var(--border); background: var(--surface); padding: 18px 0; color: var(--muted); font-size: 0.88rem; text-align: center; }
 
-    @media (max-width: 768px) {
-      .hero { padding: 20px; }
-      .hero h1 { font-size: 1.4rem; }
+    @media (max-width: 768px) { 
+      .hero { padding: 20px; } 
+      .hero h1 { font-size: 1.4rem; } 
     }
   </style>
 </head>
@@ -158,22 +94,18 @@
         </div>
         <div class="header-actions">
           <button class="btn" id="langToggle" type="button">English</button>
-          <button class="btn" id="openPublishBtn" type="button">+ انتشار / فروش محصول</button>
+          <a href="catalog.html?type=research" class="btn">آرشیو مقالات</a>
+          <button class="btn" id="openPublishBtn" type="button">+ انتشار / فروش</button>
           <button class="btn btn-primary" id="openAuthBtn" type="button">حساب کاربری و پنل</button>
         </div>
       </div>
-      <nav class="nav-tabs" id="mainNav"></nav>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
       <h1 id="heroTitle">پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست</h1>
-      <p id="heroDesc">نسخه آزمایشی قابل اجرا در GitHub Pages با پشتیبانی هم‌زمان از فروش مستقیم، بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی (RTL) و انگلیسی (LTR).</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn btn-accent" id="heroExploreBtn" type="button">مشاهده ماژول‌ها</button>
-        <button class="btn" id="heroDashboardBtn" type="button">پنل کاربری شخصی</button>
-      </div>
+      <p id="heroDesc">نسخه آزمایشی قابل اجرا در GitHub Pages با پشتیبانی هم‌زمان از فروش مستقیم و بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی (RTL) و انگلیسی (LTR).</p>
     </section>
 
     <div class="section-head">
@@ -182,7 +114,7 @@
     </div>
 
     <div class="toolbar">
-      <input class="input" id="searchInput" type="search" placeholder="جستجو..." style="flex:1; min-width:220px;" />
+      <input class="input" id="searchInput" type="search" placeholder="جستجو..." style="flex:1;min-width:220px;" />
       <select id="revenueFilter">
         <option value="all">همه مدها (رایگان، فروش مستقیم، کارمزدی)</option>
         <option value="free">رایگان / فراخوان</option>
@@ -191,10 +123,11 @@
       </select>
     </div>
 
+    <div class="nav-tabs" id="mainNav"></div>
     <div class="grid" id="itemsGrid"></div>
 
     <section class="panel" id="userDashboard">
-      <h2 class="section-title" id="dashboardTitle" style="margin-bottom:12px;">پنل کاربری شخصی: ثبت‌نام‌ها، سفارش‌ها و سهم کارمزد</h2>
+      <h2 class="section-title" id="dashboardTitle" style="margin-bottom: 12px;">پنل کاربری شخصی: ثبت‌نام‌ها، سفارش‌ها و سهم کارمزد</h2>
       <div id="ordersList"></div>
     </section>
   </main>
@@ -211,7 +144,6 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // تنظیمات مدها و درصد کارمزد پلتفرم (کاملاً انگلیسی برای تمیز ماندن کد)
     const PLATFORM_MODES = {
       free: { fa: "رایگان", en: "Free", commissionRate: 0 },
       direct_sale: { fa: "فروش مستقیم", en: "Direct Sale", commissionRate: 0 },
@@ -226,11 +158,11 @@
       user: { name: "پژوهشگر مهمان", email: "guest@socialhub.ir" },
       orders: [],
       items: [
-        { id: 1, module: "research", revenueMode: "free", price: 0, titleFa: "فراخوان طرح‌های پژوهشی سرمایه اجتماعی", titleEn: "Call for Social Capital Research", descFa: "ارسال طرح، تکمیل مراحل پژوهشی و انتشار گزارش.", descEn: "Submit proposal, complete milestones, and publish report." },
-        { id: 2, module: "education", revenueMode: "direct_sale", price: 1100000, titleFa: "دوره آموزشی روش تحقیق در مطالعات اجتماعی", titleEn: "Social Research Methodology Course", descFa: "برگزاری کلاس، تکالیف و ارزیابی مهارتی.", descEn: "Classes, assignments, and learner evaluation." },
-        { id: 3, module: "statistics", revenueMode: "marketplace_commission", price: 450000, titleFa: "مجموعه‌داده تحلیل‌شده پیمایش شهری (محصول پژوهشگر)", titleEn: "Curated Urban Survey Dataset (Author Item)", descFa: "انتشار و فروش داده تحلیل‌شده با مدل کارمزدی.", descEn: "Dataset sale under commission sharing model." },
-        { id: 4, module: "conference", revenueMode: "direct_sale", price: 550000, titleFa: "ثبت‌نام و گزارش همایش جامعه‌شناسی کاربردی", titleEn: "Applied Sociology Conference & Proceedings", descFa: "شرکت در همایش و دریافت گزارش رسمی منتشرشده.", descEn: "Conference registration and official proceedings report." },
-        { id: 5, module: "books", revenueMode: "marketplace_commission", price: 320000, titleFa: "کتاب و خلاصه تحلیلی: نهادهای اجتماعی معاصر", titleEn: "Book & Summary: Contemporary Social Institutions", descFa: "عرضه کتاب و خلاصه تخصصی توسط نویسنده/مترجم.", descEn: "Authored/translated book and structured summary." },
+        { id: 1, module: "research", revenueMode: "free", price: 0, titleFa: "فراخوان طرح‌های سرمایه اجتماعی", titleEn: "Call for Social Capital Research", descFa: "ارسال طرح، تکمیل مراحل پژوهشی و انتشار گزارش.", descEn: "Submit proposal, complete milestones, and publish report." },
+        { id: 2, module: "education", revenueMode: "direct_sale", price: 1100000, titleFa: "دوره آموزشی روش تحقیق در مطالعات اجتماعی", titleEn: "Social Research Methodology Course", descFa: "برگزاری کلاس، تکالیف و ارزیابی مهارتی.", descEn: "Course delivery, assignments, and learner evaluation." },
+        { id: 3, module: "statistics", revenueMode: "marketplace_commission", price: 450000, titleFa: "مجموعه داده تحلیل شده پیمایش شهری", titleEn: "Survey Dataset (Author Item)", descFa: "انتشار و فروش داده تحلیل شده با مدل کارمزدی.", descEn: "Dataset sale under commission sharing model." },
+        { id: 4, module: "conference", revenueMode: "direct_sale", price: 550000, titleFa: "ثبت نام و گزارش همایش جامعه شناسی کاربردی", titleEn: "Applied Sociology Conference & Proceedings", descFa: "شرکت در همایش و دریافت گزارش رسمی منتشر شده.", descEn: "Conference registration and official proceedings report." },
+        { id: 5, module: "books", revenueMode: "marketplace_commission", price: 320000, titleFa: "کتاب و خلاصه تحلیلی: نهادهای اجتماعی معاصر", titleEn: "Book & Summary: Contemporary Social Institutions", descFa: "عرضه کتاب و خلاصه تخصصی توسط نویسنده / مترجم.", descEn: "Authored/translated book and structured summary." },
         { id: 6, module: "podcasts", revenueMode: "free", price: 0, titleFa: "پادکست: گفت‌وگو درباره تحولات اجتماعی", titleEn: "Podcast: Conversations on Social Change", descFa: "تهیه و انتشار اپیزودهای تحلیلی مطالعات اجتماعی.", descEn: "Production and publication of social studies episodes." }
       ]
     };
@@ -242,28 +174,19 @@
         publishBtn: "+ انتشار / فروش محصول",
         authBtn: "حساب کاربری و پنل",
         heroTitle: "پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست",
-        heroDesc: "نسخه آزمایشی قابل اجرا در GitHub Pages با پشتیبانی هم‌زمان از فروش مستقیم، بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی (RTL) و انگلیسی (LTR).",
-        heroExplore: "مشاهده ماژول‌ها",
-        heroDashboard: "پنل کاربری شخصی",
+        heroDesc: "نسخه آزمایشی قابل اجرا در GitHub Pages با پشتیبانی هم‌زمان از فروش مستقیم و بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی (RTL) و انگلیسی (LTR).",
         searchPlaceholder: "جستجو در عنوان یا توضیحات...",
-        modeAll: "همه مدها (رایگان، فروش مستقیم، کارمزدی)",
+        modeAlt: "همه مدها (رایگان، فروش مستقیم، کارمزدی)",
         modeFree: "رایگان / فراخوان",
         modeDirect: "فروش مستقیم پلتفرم",
         modeComm: "فروش کاربر (کارمزدی)",
         freeText: "رایگان",
-        actionFree: "ثبت‌نام / دریافت",
+        actionFree: "ثبت نام / دریافت",
         actionPaid: "پرداخت آزمایشی شتاب",
         dashboardTitle: "پنل کاربری شخصی: ثبت‌نام‌ها، سفارش‌ها و سهم کارمزد",
         noOrders: "هنوز ثبت‌نام یا سفارشی ثبت نشده است.",
         footer: "نسخه آزمایشی آماده انتشار در GitHub Pages (مسیرها و شناسه‌ها انگلیسی؛ نمایش دوزبانه فارسی/انگلیسی)",
-        modules: {
-          research: "پژوهش",
-          education: "آموزش",
-          statistics: "آمار",
-          conference: "همایش",
-          books: "کتاب",
-          podcasts: "پادکست"
-        }
+        modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
       },
       en: {
         brand: "Social Studies Platform",
@@ -272,10 +195,8 @@
         authBtn: "Account & Panel",
         heroTitle: "Unified Platform for Research, Education, Statistics, Conferences, Books & Podcasts",
         heroDesc: "GitHub Pages prototype supporting direct sales, creator commission items, personal dashboard, and full Persian (RTL) & English (LTR) switching.",
-        heroExplore: "Explore Modules",
-        heroDashboard: "Personal Dashboard",
         searchPlaceholder: "Search title or description...",
-        modeAll: "All Modes (Free, Direct, Commission)",
+        modeAlt: "All Modes (Free, Direct, Commission)",
         modeFree: "Free / Open Call",
         modeDirect: "Platform Direct Sale",
         modeComm: "Creator Item (Commission)",
@@ -285,53 +206,46 @@
         dashboardTitle: "Personal Dashboard: Enrollments, Orders & Commission Breakdown",
         noOrders: "No enrollments or orders yet.",
         footer: "GitHub Pages prototype (English code/paths; full bilingual FA/EN UI)",
-        modules: {
-          research: "Research",
-          education: "Education",
-          statistics: "Statistics",
-          conference: "Conference",
-          books: "Books",
-          podcasts: "Podcasts"
-        }
+        modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
       }
     };
 
     function formatMoney(val) {
       if (!val) return i18n[state.lang].freeText;
-      const n = val.toLocaleString(state.lang === "fa" ? "fa-IR" : "en-US");
-      return state.lang === "fa" ? `${n} تومان` : `${n} IRR`;
+      const num = val.toLocaleString(state.lang === "fa" ? "fa-IR" : "en-US");
+      return state.lang === "fa" ? `${num} تومان` : `$${num} IRR`;
     }
 
     function showToast(msg) {
-      const el = document.getElementById("toast");
+      const el = document.getElementById('toast');
       el.textContent = msg;
       el.classList.add("show");
       setTimeout(() => el.classList.remove("show"), 2600);
     }
 
     function renderNav() {
-      const nav = document.getElementById("mainNav");
+      const nav = document.getElementById('mainNav');
       const mods = i18n[state.lang].modules;
       nav.innerHTML = "";
       Object.keys(mods).forEach((key) => {
-        const b = document.createElement("button");
+        const b = document.createElement('button');
         b.type = "button";
         b.className = `nav-tab ${state.activeModule === key ? "active" : ""}`;
         b.textContent = mods[key];
         b.onclick = () => {
-          state.activeModule = key;
-          renderAll();
+          // هدایت به صفحه کاتالوگ به همراه پارامتر نوع
+          window.location.href = `catalog.html?type=${key}`;
         };
         nav.appendChild(b);
       });
     }
 
     function renderItems() {
-      const grid = document.getElementById("itemsGrid");
+      const grid = document.getElementById('itemsGrid');
       const t = i18n[state.lang];
       const q = state.search.trim().toLowerCase();
-
-      const list = state.items.filter((item) => {
+      
+      const list = state.items.filter(item => {
         const okMod = item.module === state.activeModule;
         const okMode = state.revenueMode === "all" || item.revenueMode === state.revenueMode;
         const title = (state.lang === "fa" ? item.titleFa : item.titleEn).toLowerCase();
@@ -341,17 +255,17 @@
       });
 
       grid.innerHTML = "";
-      if (!list.length) {
+      if (list.length === 0) {
         grid.innerHTML = `<div class="panel"><p>${state.lang === "fa" ? "موردی یافت نشد." : "No items found."}</p></div>`;
         return;
       }
 
-      list.forEach((item) => {
-        const card = document.createElement("article");
-        card.className = "card";
+      list.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'card';
         const modeLabel = PLATFORM_MODES[item.revenueMode][state.lang];
         const isComm = item.revenueMode === "marketplace_commission";
-
+        
         card.innerHTML = `
           <div>
             <div class="card-top">
@@ -362,12 +276,13 @@
             <p style="margin-top:6px;">${state.lang === "fa" ? item.descFa : item.descEn}</p>
           </div>
           <div class="card-footer">
-            <span style="font-size:0.82rem; color:var(--muted);">${t.modules[item.module]}</span>
-            <button type="button" class="btn ${item.price === 0 ? "btn-accent" : "btn-primary"}">${item.price === 0 ? t.actionFree : t.actionPaid}</button>
+            <span style="font-size:0.82rem; color:var(--muted);">${state.lang === "fa" ? "ماژول:" : "Module:"} ${i18n[state.lang].modules[item.module]}</span>
+            <button type="button" class="btn ${item.price === 0 ? "btn-accent" : "btn-primary"}" onclick="window.location.href='catalog.html?type=${item.module}'">
+              ${item.price === 0 ? t.actionFree : t.actionPaid}
+            </button>
           </div>
         `;
-
-        card.querySelector("button").onclick = () => registerOrder(item);
+        // card.querySelector("button").onclick = () => registerOrder(item); // این خط غیرفعال شد تا به کاتالوگ برود
         grid.appendChild(card);
       });
     }
@@ -376,142 +291,91 @@
       const rate = PLATFORM_MODES[item.revenueMode].commissionRate;
       const commission = Math.round(item.price * rate);
       const creatorShare = item.price - commission;
+      
       state.orders.unshift({
         code: "ORD-" + Math.floor(10000 + Math.random() * 90000),
         title: state.lang === "fa" ? item.titleFa : item.titleEn,
         price: item.price,
-        commission,
-        creatorShare
+        commission: commission,
+        creatorShare: creatorShare
       });
+      
       renderDashboard();
-      showToast(state.lang === "fa" ? "ثبت شد و در پنل کاربری نمایش داده شد." : "Recorded in personal dashboard.");
+      showToast(state.lang === "fa" ? "ثبت شد و در پنل شخصی قابل مشاهده است." : "Recorded in personal dashboard.");
     }
 
     function renderDashboard() {
-      const el = document.getElementById("ordersList");
-      if (!state.orders.length) {
+      const el = document.getElementById('ordersList');
+      if (state.orders.length === 0) {
         el.innerHTML = `<p style="color:var(--muted);">${i18n[state.lang].noOrders}</p>`;
         return;
       }
-      el.innerHTML = state.orders
-        .map((o) => {
-          const shareText =
-            o.commission > 0
-              ? state.lang === "fa"
-                ? ` | کارمزد پلتفرم: ${formatMoney(o.commission)} — سهم تولیدکننده: ${formatMoney(o.creatorShare)}`
-                : ` | Platform Fee: ${formatMoney(o.commission)} — Creator Share: ${formatMoney(o.creatorShare)}`
-              : "";
-          return `
-            <div style="padding:10px 12px; background:var(--surface-alt); border-radius:10px; margin-bottom:8px;">
-              <strong>${o.title}</strong> <span class="tag">${o.code}</span>
-              <div style="font-size:0.88rem; color:var(--muted); margin-top:4px;">
-                ${state.lang === "fa" ? "مبلغ: " : "Amount: "}<strong>${formatMoney(o.price)}</strong>${shareText}
-              </div>
-            </div>`;
-        })
-        .join("");
+      el.innerHTML = state.orders.map(o => {
+        const shareText = o.commission === 0 ? "" : `<span style="color:var(--success); font-weight:bold; margin-inline-start: 8px;">(سهم کارمزد: ${formatMoney(o.commission)})</span>`;
+        return `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--surface-alt); padding:10px 0;">
+            <div>
+              <strong>${o.title}</strong>
+              <div style="font-size:0.8rem; color:var(--muted);">${o.code}</div>
+            </div>
+            <div style="text-align:left;">
+              <div>${formatMoney(o.price)}</div>
+              ${shareText}
+            </div>
+          </div>
+        `;
+      }).join("");
     }
 
-    function openPublishModal() {
-      const isFa = state.lang === "fa";
-      const mods = i18n[state.lang].modules;
-      const backdrop = document.getElementById("modalBackdrop");
-      document.getElementById("modalContent").innerHTML = `
-        <h3>${isFa ? "انتشار رایگان یا فروش محصول در پلتفرم" : "Publish Free or Paid Item"}</h3>
-        <div style="display:grid; gap:10px; margin-top:12px;">
-          <select id="mSel">${Object.keys(mods).map((k) => `<option value="${k}" ${k === state.activeModule ? "selected" : ""}>${mods[k]}</option>`).join("")}</select>
-          <select id="rSel">
-            <option value="free">${isFa ? "رایگان / فراخوان" : "Free / Open Call"}</option>
-            <option value="direct_sale">${isFa ? "فروش مستقیم پلتفرم" : "Direct Sale"}</option>
-            <option value="marketplace_commission">${isFa ? "فروش کاربر (با ۱۵٪ کارمزد پلتفرم)" : "Creator Sale (15% Fee)"}</option>
-          </select>
-          <input class="input" id="tInp" type="text" placeholder="${isFa ? "عنوان" : "Title"}" />
-          <input class="input" id="pInp" type="number" min="0" step="10000" placeholder="${isFa ? "قیمت (تومان)" : "Price (IRR)"}" />
-          <textarea class="input" id="dInp" rows="2" placeholder="${isFa ? "توضیح کوتاه" : "Short description"}"></textarea>
-        </div>
-        <div class="modal-actions">
-          <button type="button" class="btn" id="closeM">${isFa ? "بستن" : "Close"}</button>
-          <button type="button" class="btn btn-primary" id="saveM">${isFa ? "انتشار" : "Publish"}</button>
-        </div>
-      `;
-      backdrop.classList.add("open");
-      document.getElementById("closeM").onclick = () => backdrop.classList.remove("open");
-      document.getElementById("saveM").onclick = () => {
-        const title = document.getElementById("tInp").value.trim();
-        if (!title) return showToast(isFa ? "عنوان را وارد کنید." : "Title is required.");
-        const price = Number(document.getElementById("pInp").value) || 0;
-        const revenueMode = price === 0 ? "free" : document.getElementById("rSel").value;
-        state.items.unshift({
-          id: Date.now(),
-          module: document.getElementById("mSel").value,
-          revenueMode,
-          price,
-          titleFa: title,
-          titleEn: title,
-          descFa: document.getElementById("dInp").value.trim() || "منتشرشده در نسخه آزمایشی",
-          descEn: document.getElementById("dInp").value.trim() || "Published in prototype"
-        });
-        state.activeModule = document.getElementById("mSel").value;
-        backdrop.classList.remove("open");
-        renderAll();
-        showToast(isFa ? "منتشر شد." : "Published.");
-      };
-    }
-
-    function applyLang() {
-      const isFa = state.lang === "fa";
-      document.documentElement.lang = state.lang;
-      document.documentElement.dir = isFa ? "rtl" : "ltr";
+    function updateUI() {
       const t = i18n[state.lang];
-      document.getElementById("brandTitle").textContent = t.brand;
-      document.getElementById("langToggle").textContent = t.langBtn;
-      document.getElementById("openPublishBtn").textContent = t.publishBtn;
-      document.getElementById("openAuthBtn").textContent = t.authBtn;
-      document.getElementById("heroTitle").textContent = t.heroTitle;
-      document.getElementById("heroDesc").textContent = t.heroDesc;
-      document.getElementById("heroExploreBtn").textContent = t.heroExplore;
-      document.getElementById("heroDashboardBtn").textContent = t.heroDashboard;
-      document.getElementById("activeModuleTitle").textContent = t.modules[state.activeModule];
-      document.getElementById("searchInput").placeholder = t.searchPlaceholder;
-      const sel = document.getElementById("revenueFilter");
-      sel.options[0].text = t.modeAll;
-      sel.options[1].text = t.modeFree;
-      sel.options[2].text = t.modeDirect;
-      sel.options[3].text = t.modeComm;
-      document.getElementById("dashboardTitle").textContent = t.dashboardTitle;
-      document.getElementById("footerText").textContent = t.footer;
+      document.documentElement.lang = state.lang;
+      document.documentElement.dir = state.lang === "fa" ? "rtl" : "ltr";
+      
+      document.getElementById('brandTitle').textContent = t.brand;
+      document.getElementById('langToggle').textContent = t.langBtn;
+      document.getElementById('openPublishBtn').textContent = t.publishBtn;
+      document.getElementById('openAuthBtn').textContent = t.authBtn;
+      
+      document.getElementById('heroTitle').textContent = t.heroTitle;
+      document.getElementById('heroDesc').textContent = t.heroDesc;
+      
+      document.getElementById('activeModuleTitle').textContent = t.modules[state.activeModule];
+      document.getElementById('dashboardTitle').textContent = t.dashboardTitle;
+      document.getElementById('footerText').textContent = t.footer;
+      
+      document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+      
+      const revFilter = document.getElementById('revenueFilter');
+      revFilter.options[0].text = t.modeAlt;
+      revFilter.options[1].text = t.modeFree;
+      revFilter.options[2].text = t.modeDirect;
+      revFilter.options[3].text = t.modeComm;
     }
 
     function renderAll() {
-      applyLang();
+      updateUI();
       renderNav();
       renderItems();
       renderDashboard();
     }
 
-    document.getElementById("langToggle").onclick = () => {
+    document.getElementById('langToggle').onclick = () => {
       state.lang = state.lang === "fa" ? "en" : "fa";
       renderAll();
     };
-    document.getElementById("searchInput").oninput = (e) => {
+    
+    document.getElementById('searchInput').oninput = (e) => {
       state.search = e.target.value;
       renderItems();
     };
-    document.getElementById("revenueFilter").onchange = (e) => {
+    
+    document.getElementById('revenueFilter').onchange = (e) => {
       state.revenueMode = e.target.value;
       renderItems();
     };
-    document.getElementById("openPublishBtn").onclick = openPublishModal;
-    document.getElementById("openAuthBtn").onclick = () =>
-      showToast(state.lang === "fa" ? "ورود آزمایشی فعال است؛ می‌توانید ثبت سفارش یا انتشار را تست کنید." : "Demo session is active.");
-    document.getElementById("heroExploreBtn").onclick = () =>
-      document.getElementById("itemsGrid").scrollIntoView({ behavior: "smooth" });
-    document.getElementById("heroDashboardBtn").onclick = () =>
-      document.getElementById("userDashboard").scrollIntoView({ behavior: "smooth" });
-    document.getElementById("modalBackdrop").onclick = (e) => {
-      if (e.target.id === "modalBackdrop") e.target.classList.remove("open");
-    };
 
+    // Initialize
     renderAll();
   </script>
 </body>
