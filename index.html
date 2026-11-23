@@ -10,20 +10,31 @@
   
   <style>
     :root {
-      --bg: #f5f7fa; --surface: #ffffff; --surface-alt: #eef2f6; --text: #14202c;
-      --primary: #0f4c81; --primary-hover: #163a5f; --muted: #58697a; --accent: #0d9488;
-      --border: #dce3ec; --radius: 14px; --shadow: 0 8px 24px rgba(15, 76, 129, 0.06);
-      --font-fa: "Vazirmatn", "system-ui", sans-serif; --font-en: "Inter", "system-ui", sans-serif;
+      /* تغییر رنگ پس‌زمینه کل سایت به خاکستری ملایم برای کاهش جیغ بودن */
+      --bg: #eaeff5; 
+      --surface: #ffffff; 
+      --surface-alt: #f1f5f9; 
+      --text: #1e293b;
+      --primary: #0f4c81; 
+      --primary-hover: #163a5f; 
+      --muted: #64748b; 
+      --accent: #0d9488;
+      --border: #cbd5e1; 
+      --radius: 14px; 
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.04); /* سایه ملایم‌تر */
+      --font-fa: "Vazirmatn", "system-ui", sans-serif; 
+      --font-en: "Inter", "system-ui", sans-serif;
     }
 
     html[lang="fa"] body { font-family: var(--font-fa); font-size: 15px; }
     html[lang="en"] body { font-family: var(--font-en); font-size: 15px; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* پس‌زمینه کل سایت حالا خاکستری مایل به آبی است */
     body { background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
     .container { max-width: 1240px; margin: 0 auto; padding: 20px; }
 
-    header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 40; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 40; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 0; flex-wrap: wrap; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.12rem; color: var(--primary); cursor: pointer; }
     .brand-badge { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 6px 10px; border-radius: 10px; font-size: 0.85rem; }
@@ -41,7 +52,7 @@
     .nav-tab:hover { background: var(--surface-alt); color: var(--text); }
     .nav-tab.active { background: var(--primary); color: #fff; }
 
-    /* پس‌زمینه تیره و شیک برای هیرو */
+    /* هیرو: برگشت به رنگ آبی نفتی تیره و شیک */
     .hero { margin: 22px 0; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #fff; border-radius: 20px; padding: 35px 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center; }
     .hero h1 { font-size: 1.9rem; line-height: 1.4; margin-bottom: 12px; font-weight: 800; }
     .hero p { opacity: 0.85; margin-bottom: 0; max-width: 800px; margin: 0 auto; font-size: 1.05rem; }
@@ -52,17 +63,16 @@
     .input, select, textarea { border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 9px 12px; border-radius: 10px; font-size: 0.92rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; margin-bottom: 30px; }
 
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
     .tag { background: var(--surface-alt); color: var(--primary); padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; }
     .price { font-weight: 800; color: var(--accent); font-size: 0.95rem; }
     .card h3 { font-size: 1.05rem; line-height: 1.45; }
-    .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--surface-alt); padding-top: 12px; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--border); padding-top: 12px; }
     
     .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 24px; }
-    
-    /* فوتر تمیز و بدون جمله آزمایشی */
-    footer { border-top: 1px solid var(--border); background: var(--surface); padding: 20px 0; color: var(--muted); font-size: 0.9rem; text-align: center; font-weight: 600; }
+    footer { border-top: 1px solid var(--border); background: var(--surface); padding: 20px 0; color: var(--muted); font-size: 0.9rem; text-align: center; }
 
     .hidden { display: none !important; }
   </style>
@@ -126,24 +136,23 @@
   </footer>
 
   <script>
-    // دیتابیس مرکزی
     const allData = [
-      { type: "research", category: "جامعه‌شناسی", title: "تأثیر شبکه‌های اجتماعی بر سبک زندگی", desc: "بررسی ابعاد مختلف اجتماعی و روانی...", price: 0, link: "article-1.html" },
-      { type: "research", category: "سیاست", title: "تحلیل سرمایه اجتماعی در کلان‌شهرها", desc: "پژوهشی در مورد چگونگی شکل‌گیری اعتماد...", price: 0, link: "#" },
-      { type: "education", category: "کارگاه", title: "دوره روش تحقیق در مطالعات اجتماعی", desc: "برگزاری کلاس، تکالیف و ارزیابی مهارتی...", price: 1100000, link: "#" },
-      { type: "statistics", category: "داده‌های شهری", title: "مجموعه داده تحلیل شده پیمایش شهری", desc: "انتشار و فروش داده تحلیل شده...", price: 450000, link: "#" },
-      { type: "conference", category: "همایش ملی", title: "ثبت نام همایش جامعه شناسی", desc: "شرکت در همایش و دریافت گزارش...", price: 550000, link: "#" },
-      { type: "books", category: "تألیف", title: "کتاب نهادهای اجتماعی معاصر", desc: "عرضه کتاب و خلاصه تخصصی...", price: 320000, link: "#" },
-      { type: "podcasts", category: "گفت‌وگو", title: "پادکست تحولات اجتماعی", desc: "تهیه و انتشار اپیزودهای تحلیلی...", price: 0, link: "#" }
+      { type: "research", category: "جامعه‌شناسی", titleFa: "تأثیر شبکه‌های اجتماعی بر سبک زندگی", titleEn: "Impact of Social Media on Lifestyle", descFa: "بررسی ابعاد مختلف اجتماعی و روانی...", descEn: "Examining social and psychological dimensions...", price: 0, link: "article-1.html" },
+      { type: "research", category: "سیاست", titleFa: "تحلیل سرمایه اجتماعی در کلان‌شهرها", titleEn: "Analysis of Social Capital in Metropolises", descFa: "پژوهشی در مورد چگونگی شکل‌گیری اعتماد...", descEn: "Research on how trust is formed...", price: 0, link: "#" },
+      { type: "education", category: "کارگاه", titleFa: "دوره روش تحقیق در مطالعات اجتماعی", titleEn: "Social Research Methodology Course", descFa: "برگزاری کلاس، تکالیف و ارزیابی مهارتی...", descEn: "Class delivery, assignments, and evaluation...", price: 1100000, link: "#" },
+      { type: "statistics", category: "داده‌های شهری", titleFa: "مجموعه داده تحلیل شده پیمایش شهری", titleEn: "Analyzed Urban Survey Dataset", descFa: "انتشار و فروش داده تحلیل شده...", descEn: "Publication and sale of analyzed data...", price: 450000, link: "#" },
+      { type: "conference", category: "همایش ملی", titleFa: "ثبت نام همایش جامعه شناسی", titleEn: "Sociology Conference Registration", descFa: "شرکت در همایش و دریافت گزارش...", descEn: "Attending the conference and receiving the report...", price: 550000, link: "#" },
+      { type: "books", category: "تألیف", titleFa: "کتاب نهادهای اجتماعی معاصر", titleEn: "Book: Contemporary Social Institutions", descFa: "عرضه کتاب و خلاصه تخصصی...", descEn: "Book supply and specialized summary...", price: 320000, link: "#" },
+      { type: "podcasts", category: "گفت‌وگو", titleFa: "پادکست تحولات اجتماعی", titleEn: "Social Changes Podcast", descFa: "تهیه و انتشار اپیزودهای تحلیلی...", descEn: "Production and release of analytical episodes...", price: 0, link: "#" }
     ];
 
     const pageConfigs = {
-      research: { titleFa: "آرشیو پژوهش‌ها", titleEn: "Research Archive", categories: ["همه موضوعات", "جامعه‌شناسی", "سیاست"] },
-      education: { titleFa: "دوره‌های آموزشی", titleEn: "Education", categories: ["همه موضوعات", "کارگاه", "وبینار"] },
-      statistics: { titleFa: "آمار و داده‌ها", titleEn: "Statistics", categories: ["همه موضوعات", "داده‌های شهری"] },
-      conference: { titleFa: "همایش‌ها", titleEn: "Conferences", categories: ["همه موضوعات", "همایش ملی"] },
-      books: { titleFa: "کتاب‌ها", titleEn: "Books", categories: ["همه موضوعات", "تألیف", "ترجمه"] },
-      podcasts: { titleFa: "پادکست‌ها", titleEn: "Podcasts", categories: ["همه موضوعات", "گفت‌وگو"] }
+      research: { titleFa: "آرشیو پژوهش‌ها", titleEn: "Research Archive", categoriesFa: ["همه موضوعات", "جامعه‌شناسی", "سیاست"], categoriesEn: ["All Categories", "Sociology", "Politics"] },
+      education: { titleFa: "دوره‌های آموزشی", titleEn: "Education Courses", categoriesFa: ["همه موضوعات", "کارگاه", "وبینار"], categoriesEn: ["All Categories", "Workshop", "Webinar"] },
+      statistics: { titleFa: "آمار و داده‌ها", titleEn: "Statistics & Data", categoriesFa: ["همه موضوعات", "داده‌های شهری"], categoriesEn: ["All Categories", "Urban Data"] },
+      conference: { titleFa: "همایش‌ها", titleEn: "Conferences", categoriesFa: ["همه موضوعات", "همایش ملی"], categoriesEn: ["All Categories", "National Conference"] },
+      books: { titleFa: "کتاب‌ها", titleEn: "Books", categoriesFa: ["همه موضوعات", "تألیف", "ترجمه"], categoriesEn: ["All Categories", "Authored", "Translated"] },
+      podcasts: { titleFa: "پادکست‌ها", titleEn: "Podcasts", categoriesFa: ["همه موضوعات", "گفت‌وگو"], categoriesEn: ["All Categories", "Interview"] }
     };
 
     const state = {
@@ -156,13 +165,17 @@
         brand: "پلتفرم مطالعات اجتماعی", langBtn: "English", publishBtn: "+ انتشار / فروش", authBtn: "حساب کاربری",
         heroTitle: "پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست",
         heroDesc: "با پشتیبانی هم‌زمان از فروش مستقیم و بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی و انگلیسی.",
-        freeText: "رایگان", modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
+        freeText: "رایگان", btnDetails: "مشاهده جزئیات &larr;", btnViewAll: "مشاهده همه", noItems: "موردی یافت نشد.", backToHome: "بازگشت به صفحه اصلی",
+        searchCatalog: "جستجو در عنوان یا چکیده...", footer: "© پلتفرم مطالعات اجتماعی - تمامی حقوق محفوظ است.",
+        modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
       },
       en: {
         brand: "Social Studies Platform", langBtn: "فارسی", publishBtn: "+ Publish / Sell", authBtn: "Account",
         heroTitle: "Unified Platform for Social Studies",
         heroDesc: "Supporting direct sales, creator commission items, personal dashboard, and bilingual UI.",
-        freeText: "Free", modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
+        freeText: "Free", btnDetails: "View Details &rarr;", btnViewAll: "View All", noItems: "No items found.", backToHome: "Back to Home",
+        searchCatalog: "Search in title or abstract...", footer: "© Social Studies Platform - All rights reserved.",
+        modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
       }
     };
 
@@ -187,22 +200,27 @@
 
     function renderItems() {
       const grid = document.getElementById('itemsGrid');
+      const t = i18n[state.lang];
+      // فیلتر بر اساس ماژول فعال
       const list = allData.filter(item => item.type === state.activeModule).slice(0, 4);
       
-      grid.innerHTML = list.length === 0 ? `<div class="panel"><p>موردی یافت نشد.</p></div>` : "";
+      grid.innerHTML = list.length === 0 ? `<div class="panel"><p>${t.noItems}</p></div>` : "";
 
       list.forEach(item => {
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
           <div>
-            <div class="card-top"><span class="tag">${item.category}</span><span class="price">${formatPrice(item.price)}</span></div>
-            <h3 style="margin-top:10px;">${item.title}</h3>
-            <p style="margin-top:6px;">${item.desc}</p>
+            <div class="card-top">
+              <span class="tag">${state.lang === 'fa' ? item.category : 'Category'}</span>
+              <span class="price">${formatPrice(item.price)}</span>
+            </div>
+            <h3 style="margin-top:10px;">${state.lang === "fa" ? item.titleFa : item.titleEn}</h3>
+            <p style="margin-top:6px;">${state.lang === "fa" ? item.descFa : item.descEn}</p>
           </div>
           <div class="card-footer">
-            <span style="font-size:0.82rem; color:var(--muted);">${i18n[state.lang].modules[item.type]}</span>
-            <button type="button" class="btn btn-primary" onclick="openCatalog('${item.type}')">مشاهده همه</button>
+            <span style="font-size:0.82rem; color:var(--muted);">${t.modules[item.type]}</span>
+            <button type="button" class="btn btn-primary" onclick="openCatalog('${item.type}')">${t.btnViewAll}</button>
           </div>
         `;
         grid.appendChild(card);
@@ -210,14 +228,21 @@
     }
 
     function renderCatalog() {
+      const t = i18n[state.lang];
       const config = pageConfigs[state.catalogType];
-      document.getElementById('catalogTitle').textContent = state.lang === "fa" ? config.titleFa : config.titleEn;
       
+      document.getElementById('catalogTitle').textContent = state.lang === "fa" ? config.titleFa : config.titleEn;
+      document.getElementById('catalogSearch').placeholder = t.searchCatalog;
+      document.getElementById('catalogSearch').value = state.catalogSearch;
+
+      // پر کردن فیلترها بر اساس زبان
       const filter = document.getElementById('catalogCategoryFilter');
       filter.innerHTML = "";
-      config.categories.forEach(cat => {
+      const cats = state.lang === "fa" ? config.categoriesFa : config.categoriesEn;
+      cats.forEach((cat, index) => {
         const opt = document.createElement('option');
-        opt.value = cat === "همه موضوعات" ? "all" : cat;
+        // برای مقداردهی از ایندکس استفاده می‌کنیم تا در هر دو زبان منطق حفظ شود
+        opt.value = index === 0 ? "all" : index; 
         opt.textContent = cat;
         filter.appendChild(opt);
       });
@@ -226,22 +251,28 @@
       const q = state.catalogSearch.toLowerCase();
       
       const filtered = allData.filter(item => {
-        return item.type === state.catalogType && (item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q));
+        // فیلتر جستجو
+        const matchSearch = (state.lang === "fa" ? item.titleFa : item.titleEn).toLowerCase().includes(q) || 
+                            (state.lang === "fa" ? item.descFa : item.descEn).toLowerCase().includes(q);
+        return item.type === state.catalogType && matchSearch;
       });
 
-      grid.innerHTML = filtered.length === 0 ? '<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">موردی یافت نشد.</p>' : "";
+      grid.innerHTML = filtered.length === 0 ? `<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">${t.noItems}</p>` : "";
 
       filtered.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
           <div>
-            <div class="card-top"><span class="tag">${item.category}</span><span class="price">${formatPrice(item.price)}</span></div>
-            <h3 style="margin-top:10px;">${item.title}</h3>
-            <p style="margin-top:6px;">${item.desc}</p>
+            <div class="card-top">
+              <span class="tag">${state.lang === 'fa' ? item.category : 'Category'}</span>
+              <span class="price">${formatPrice(item.price)}</span>
+            </div>
+            <h3 style="margin-top:10px;">${state.lang === "fa" ? item.titleFa : item.titleEn}</h3>
+            <p style="margin-top:6px;">${state.lang === "fa" ? item.descFa : item.descEn}</p>
           </div>
           <div class="card-footer">
-            <a href="${item.link}" class="btn btn-accent" style="text-decoration:none;">مشاهده جزئیات &larr;</a>
+            <a href="${item.link}" class="btn btn-accent" style="text-decoration:none;">${t.btnDetails}</a>
           </div>
         `;
         grid.appendChild(card);
@@ -252,6 +283,7 @@
       const t = i18n[state.lang];
       document.documentElement.lang = state.lang;
       document.documentElement.dir = state.lang === "fa" ? "rtl" : "ltr";
+      
       document.getElementById('brandTitle').textContent = t.brand;
       document.getElementById('langToggle').textContent = t.langBtn;
       document.getElementById('openPublishBtn').textContent = t.publishBtn;
@@ -259,12 +291,18 @@
       document.getElementById('heroTitle').textContent = t.heroTitle;
       document.getElementById('heroDesc').textContent = t.heroDesc;
       document.getElementById('activeModuleTitle').textContent = t.modules[state.activeModule];
+      document.getElementById('footerText').textContent = t.footer;
+      
+      // دکمه بازگشت در صفحه کاتالوگ
+      const backBtn = document.querySelector('#catalogView .btn');
+      if(backBtn) backBtn.textContent = t.backToHome;
     }
 
     function showHome() {
       state.currentView = "home";
       document.getElementById('homeView').classList.remove('hidden');
       document.getElementById('catalogView').classList.add('hidden');
+      updateUI();
       renderNav();
       renderItems();
     }
@@ -274,14 +312,24 @@
       state.catalogType = type;
       document.getElementById('homeView').classList.add('hidden');
       document.getElementById('catalogView').classList.remove('hidden');
+      updateUI();
       renderNav();
       renderCatalog();
     }
 
-    document.getElementById('langToggle').onclick = () => { state.lang = state.lang === "fa" ? "en" : "fa"; updateUI(); if (state.currentView === 'home') renderItems(); else renderCatalog(); };
-    document.getElementById('catalogSearch').oninput = (e) => { state.catalogSearch = e.target.value; renderCatalog(); };
+    document.getElementById('langToggle').onclick = () => { 
+      state.lang = state.lang === "fa" ? "en" : "fa"; 
+      // رفرش کردن کل صفحه فعلی با زبان جدید
+      if (state.currentView === 'home') showHome(); 
+      else openCatalog(state.catalogType); 
+    };
 
-    updateUI();
+    document.getElementById('catalogSearch').oninput = (e) => { 
+      state.catalogSearch = e.target.value; 
+      renderCatalog(); 
+    };
+
+    // شروع به کار
     showHome();
   </script>
 </body>
