@@ -10,20 +10,10 @@
   
   <style>
     :root {
-      --bg: #f5f7fa;
-      --surface: #ffffff;
-      --surface-alt: #eef2f6;
-      --text: #14202c;
-      --primary: #0f4c81;
-      --primary-hover: #163a5f;
-      --muted: #58697a;
-      --accent: #0d9488;
-      --border: #dce3ec;
-      --success: #15803d;
-      --radius: 14px;
-      --shadow: 0 8px 24px rgba(15, 76, 129, 0.06);
-      --font-fa: "Vazirmatn", "system-ui", sans-serif;
-      --font-en: "Inter", "system-ui", sans-serif;
+      --bg: #f5f7fa; --surface: #ffffff; --surface-alt: #eef2f6; --text: #14202c;
+      --primary: #0f4c81; --primary-hover: #163a5f; --muted: #58697a; --accent: #0d9488;
+      --border: #dce3ec; --radius: 14px; --shadow: 0 8px 24px rgba(15, 76, 129, 0.06);
+      --font-fa: "Vazirmatn", "system-ui", sans-serif; --font-en: "Inter", "system-ui", sans-serif;
     }
 
     html[lang="fa"] body { font-family: var(--font-fa); font-size: 15px; }
@@ -51,7 +41,7 @@
     .nav-tab:hover { background: var(--surface-alt); color: var(--text); }
     .nav-tab.active { background: var(--primary); color: #fff; }
 
-    /* استایل جدید هیرو با رنگ تیره و شیک */
+    /* پس‌زمینه تیره و شیک برای هیرو */
     .hero { margin: 22px 0; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #fff; border-radius: 20px; padding: 35px 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center; }
     .hero h1 { font-size: 1.9rem; line-height: 1.4; margin-bottom: 12px; font-weight: 800; }
     .hero p { opacity: 0.85; margin-bottom: 0; max-width: 800px; margin: 0 auto; font-size: 1.05rem; }
@@ -65,15 +55,15 @@
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
     .tag { background: var(--surface-alt); color: var(--primary); padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; }
-    .tag-comm { background: #e6fffa; color: #0f766e; }
     .price { font-weight: 800; color: var(--accent); font-size: 0.95rem; }
     .card h3 { font-size: 1.05rem; line-height: 1.45; }
     .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--surface-alt); padding-top: 12px; }
     
     .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 24px; }
-    footer { border-top: 1px solid var(--border); background: var(--surface); padding: 18px 0; color: var(--muted); font-size: 0.88rem; text-align: center; }
+    
+    /* فوتر تمیز و بدون جمله آزمایشی */
+    footer { border-top: 1px solid var(--border); background: var(--surface); padding: 20px 0; color: var(--muted); font-size: 0.9rem; text-align: center; font-weight: 600; }
 
-    /* کلاس مخفی کردن صفحات */
     .hidden { display: none !important; }
   </style>
 </head>
@@ -91,14 +81,13 @@
           <button class="btn btn-primary" id="openAuthBtn" type="button">حساب کاربری و پنل</button>
         </div>
       </div>
-      <!-- منوی ماژول ها -->
       <div class="nav-tabs" id="mainNav"></div>
     </div>
   </header>
 
   <main class="container">
     
-    <!-- صفحه اصلی (Home View) -->
+    <!-- صفحه اصلی -->
     <div id="homeView">
       <section class="hero">
         <h1 id="heroTitle">پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست</h1>
@@ -110,25 +99,10 @@
         <span id="activeUserBadge" class="tag">کاربر مهمان</span>
       </div>
 
-      <div class="toolbar">
-        <input class="input" id="searchInput" type="search" placeholder="جستجو..." style="flex:1;min-width:220px;" />
-        <select id="revenueFilter">
-          <option value="all">همه مدها (رایگان، فروش مستقیم، کارمزدی)</option>
-          <option value="free">رایگان / فراخوان</option>
-          <option value="direct_sale">فروش مستقیم پلتفرم</option>
-          <option value="marketplace_commission">فروش کاربر (کارمزدی)</option>
-        </select>
-      </div>
-
       <div class="grid" id="itemsGrid"></div>
-
-      <section class="panel" id="userDashboard">
-        <h2 class="section-title" id="dashboardTitle" style="margin-bottom: 12px;">پنل کاربری شخصی: ثبت‌نام‌ها، سفارش‌ها و سهم کارمزد</h2>
-        <div id="ordersList"></div>
-      </section>
     </div>
 
-    <!-- صفحه کاتالوگ (Catalog View) -->
+    <!-- صفحه کاتالوگ -->
     <div id="catalogView" class="hidden">
       <div class="section-head" style="margin-top: 0;">
         <h2 class="section-title" id="catalogTitle">آرشیو</h2>
@@ -137,9 +111,7 @@
 
       <div class="toolbar">
         <input class="input" id="catalogSearch" type="search" placeholder="جستجو در عنوان یا چکیده..." style="flex:1;min-width:220px;" />
-        <select id="catalogCategoryFilter" class="input">
-          <!-- گزینه‌ها توسط جاوااسکریپت پر می‌شوند -->
-        </select>
+        <select id="catalogCategoryFilter" class="input"></select>
       </div>
 
       <div class="grid" id="catalogGrid"></div>
@@ -149,106 +121,51 @@
 
   <footer>
     <div class="container" id="footerText">
-      نسخه آزمایشی آماده انتشار در GitHub Pages (مسیرها و شناسه‌ها انگلیسی؛ نمایش دوزبانه فارسی/انگلیسی)
+      © پلتفرم مطالعات اجتماعی - تمامی حقوق محفوظ است.
     </div>
   </footer>
 
   <script>
-    // ==========================================
-    // ۱. دیتابیس مرکزی
-    // ==========================================
+    // دیتابیس مرکزی
     const allData = [
-      // --- بخش پژوهش ---
       { type: "research", category: "جامعه‌شناسی", title: "تأثیر شبکه‌های اجتماعی بر سبک زندگی", desc: "بررسی ابعاد مختلف اجتماعی و روانی...", price: 0, link: "article-1.html" },
       { type: "research", category: "سیاست", title: "تحلیل سرمایه اجتماعی در کلان‌شهرها", desc: "پژوهشی در مورد چگونگی شکل‌گیری اعتماد...", price: 0, link: "#" },
-      { type: "research", category: "جامعه‌شناسی", title: "فراخوان طرح‌های سرمایه اجتماعی", desc: "ارسال طرح، تکمیل مراحل پژوهشی و انتشار گزارش.", price: 0, link: "#" },
-      
-      // --- بخش آموزش ---
       { type: "education", category: "کارگاه", title: "دوره روش تحقیق در مطالعات اجتماعی", desc: "برگزاری کلاس، تکالیف و ارزیابی مهارتی...", price: 1100000, link: "#" },
-      { type: "education", category: "وبینار", title: "وبینار تحلیل داده‌های کیفی", desc: "آموزش نرم‌افزار MAXQDA...", price: 450000, link: "#" },
-
-      // --- بخش آمار ---
-      { type: "statistics", category: "داده‌های شهری", title: "مجموعه داده تحلیل شده پیمایش شهری", desc: "انتشار و فروش داده تحلیل شده با مدل کارمزدی...", price: 450000, link: "#" },
-
-      // --- بخش همایش ---
-      { type: "conference", category: "همایش ملی", title: "ثبت نام همایش جامعه شناسی کاربردی", desc: "شرکت در همایش و دریافت گزارش رسمی...", price: 550000, link: "#" },
-
-      // --- بخش کتاب ---
-      { type: "books", category: "تألیف", title: "کتاب نهادهای اجتماعی معاصر", desc: "عرضه کتاب و خلاصه تخصصی توسط نویسنده...", price: 320000, link: "#" },
-
-      // --- بخش پادکست ---
+      { type: "statistics", category: "داده‌های شهری", title: "مجموعه داده تحلیل شده پیمایش شهری", desc: "انتشار و فروش داده تحلیل شده...", price: 450000, link: "#" },
+      { type: "conference", category: "همایش ملی", title: "ثبت نام همایش جامعه شناسی", desc: "شرکت در همایش و دریافت گزارش...", price: 550000, link: "#" },
+      { type: "books", category: "تألیف", title: "کتاب نهادهای اجتماعی معاصر", desc: "عرضه کتاب و خلاصه تخصصی...", price: 320000, link: "#" },
       { type: "podcasts", category: "گفت‌وگو", title: "پادکست تحولات اجتماعی", desc: "تهیه و انتشار اپیزودهای تحلیلی...", price: 0, link: "#" }
     ];
 
-    // ==========================================
-    // ۲. تنظیمات صفحات و زبان
-    // ==========================================
     const pageConfigs = {
-      research: { titleFa: "آرشیو پژوهش‌ها و مقالات", titleEn: "Research Archive", categories: ["همه موضوعات", "جامعه‌شناسی", "سیاست", "اقتصاد"] },
-      education: { titleFa: "دوره‌ها و کارگاه‌های آموزشی", titleEn: "Education & Workshops", categories: ["همه موضوعات", "کارگاه", "وبینار", "دوره بلندمدت"] },
-      statistics: { titleFa: "آمار و مجموعه داده‌ها", titleEn: "Statistics & Data", categories: ["همه موضوعات", "داده‌های شهری", "داده‌های اقتصادی"] },
-      conference: { titleFa: "همایش‌ها و رویدادها", titleEn: "Conferences & Events", categories: ["همه موضوعات", "همایش ملی", "همایش بین‌المللی"] },
-      books: { titleFa: "کتاب‌ها و انتشارات", titleEn: "Books & Publications", categories: ["همه موضوعات", "تألیف", "ترجمه", "خلاصه کتاب"] },
-      podcasts: { titleFa: "پادکست‌های صوتی", titleEn: "Podcasts", categories: ["همه موضوعات", "گفت‌وگو", "تحلیل صوتی"] }
+      research: { titleFa: "آرشیو پژوهش‌ها", titleEn: "Research Archive", categories: ["همه موضوعات", "جامعه‌شناسی", "سیاست"] },
+      education: { titleFa: "دوره‌های آموزشی", titleEn: "Education", categories: ["همه موضوعات", "کارگاه", "وبینار"] },
+      statistics: { titleFa: "آمار و داده‌ها", titleEn: "Statistics", categories: ["همه موضوعات", "داده‌های شهری"] },
+      conference: { titleFa: "همایش‌ها", titleEn: "Conferences", categories: ["همه موضوعات", "همایش ملی"] },
+      books: { titleFa: "کتاب‌ها", titleEn: "Books", categories: ["همه موضوعات", "تألیف", "ترجمه"] },
+      podcasts: { titleFa: "پادکست‌ها", titleEn: "Podcasts", categories: ["همه موضوعات", "گفت‌وگو"] }
     };
 
     const state = {
-      lang: "fa",
-      currentView: "home", // home | catalog
-      activeModule: "research",
-      catalogType: "research",
-      search: "",
-      revenueMode: "all",
-      catalogSearch: "",
-      catalogCategory: "all"
+      lang: "fa", currentView: "home", activeModule: "research", catalogType: "research",
+      catalogSearch: "", catalogCategory: "all"
     };
 
     const i18n = {
       fa: {
-        brand: "پلتفرم مطالعات اجتماعی",
-        langBtn: "English",
-        publishBtn: "+ انتشار / فروش محصول",
-        authBtn: "حساب کاربری و پنل",
+        brand: "پلتفرم مطالعات اجتماعی", langBtn: "English", publishBtn: "+ انتشار / فروش", authBtn: "حساب کاربری",
         heroTitle: "پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست",
         heroDesc: "با پشتیبانی هم‌زمان از فروش مستقیم و بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی و انگلیسی.",
-        searchPlaceholder: "جستجو در عنوان یا توضیحات...",
-        modeAlt: "همه مدها (رایگان، فروش مستقیم، کارمزدی)",
-        modeFree: "رایگان / فراخوان",
-        modeDirect: "فروش مستقیم پلتفرم",
-        modeComm: "فروش کاربر (کارمزدی)",
-        freeText: "رایگان",
-        actionFree: "ثبت نام / دریافت",
-        actionPaid: "پرداخت آزمایشی شتاب",
-        dashboardTitle: "پنل کاربری شخصی: ثبت‌نام‌ها، سفارش‌ها و سهم کارمزد",
-        noOrders: "هنوز ثبت‌نام یا سفارشی ثبت نشده است.",
-        footer: "نسخه آزمایشی آماده انتشار در GitHub Pages",
-        modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
+        freeText: "رایگان", modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
       },
       en: {
-        brand: "Social Studies Platform",
-        langBtn: "فارسی",
-        publishBtn: "+ Publish / Sell Item",
-        authBtn: "Account & Panel",
-        heroTitle: "Unified Platform for Research, Education, Statistics, Conferences, Books & Podcasts",
-        heroDesc: "Supporting direct sales, creator commission items, personal dashboard, and full Persian (RTL) & English (LTR) switching.",
-        searchPlaceholder: "Search title or description...",
-        modeAlt: "All Modes (Free, Direct, Commission)",
-        modeFree: "Free / Open Call",
-        modeDirect: "Platform Direct Sale",
-        modeComm: "Creator Item (Commission)",
-        freeText: "Free",
-        actionFree: "Enroll / Access",
-        actionPaid: "Simulate Shetab Pay",
-        dashboardTitle: "Personal Dashboard: Enrollments, Orders & Commission Breakdown",
-        noOrders: "No enrollments or orders yet.",
-        footer: "GitHub Pages prototype",
-        modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
+        brand: "Social Studies Platform", langBtn: "فارسی", publishBtn: "+ Publish / Sell", authBtn: "Account",
+        heroTitle: "Unified Platform for Social Studies",
+        heroDesc: "Supporting direct sales, creator commission items, personal dashboard, and bilingual UI.",
+        freeText: "Free", modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
       }
     };
 
-    // ==========================================
-    // ۳. توابع کمکی و رندر
-    // ==========================================
     function formatPrice(price) {
       if (price === 0) return i18n[state.lang].freeText;
       return price.toLocaleString(state.lang === "fa" ? 'fa-IR' : 'en-US') + (state.lang === "fa" ? " تومان" : " IRR");
@@ -261,42 +178,25 @@
       Object.keys(mods).forEach((key) => {
         const b = document.createElement('button');
         b.type = "button";
-        b.className = `nav-tab ${state.currentView === 'home' && state.activeModule === key ? "active" : (state.currentView === 'catalog' && state.catalogType === key ? "active" : "")}`;
+        b.className = `nav-tab ${(state.currentView === 'home' && state.activeModule === key) || (state.currentView === 'catalog' && state.catalogType === key) ? "active" : ""}`;
         b.textContent = mods[key];
-        b.onclick = () => {
-          openCatalog(key);
-        };
+        b.onclick = () => openCatalog(key);
         nav.appendChild(b);
       });
     }
 
-    // رندر صفحه اصلی
     function renderItems() {
       const grid = document.getElementById('itemsGrid');
-      const t = i18n[state.lang];
-      const q = state.search.trim().toLowerCase();
+      const list = allData.filter(item => item.type === state.activeModule).slice(0, 4);
       
-      const list = allData.filter(item => {
-        const okMod = item.type === state.activeModule;
-        const matchSearch = item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
-        return okMod && matchSearch;
-      }).slice(0, 4); // فقط ۴ مورد اول را نشان بده تا صفحه شلوغ نشود
-
-      grid.innerHTML = "";
-      if (list.length === 0) {
-        grid.innerHTML = `<div class="panel"><p>${state.lang === "fa" ? "موردی یافت نشد." : "No items found."}</p></div>`;
-        return;
-      }
+      grid.innerHTML = list.length === 0 ? `<div class="panel"><p>موردی یافت نشد.</p></div>` : "";
 
       list.forEach(item => {
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
           <div>
-            <div class="card-top">
-              <span class="tag">${item.category}</span>
-              <span class="price">${formatPrice(item.price)}</span>
-            </div>
+            <div class="card-top"><span class="tag">${item.category}</span><span class="price">${formatPrice(item.price)}</span></div>
             <h3 style="margin-top:10px;">${item.title}</h3>
             <p style="margin-top:6px;">${item.desc}</p>
           </div>
@@ -309,12 +209,10 @@
       });
     }
 
-    // رندر صفحه کاتالوگ
     function renderCatalog() {
       const config = pageConfigs[state.catalogType];
       document.getElementById('catalogTitle').textContent = state.lang === "fa" ? config.titleFa : config.titleEn;
       
-      // پر کردن فیلترها
       const filter = document.getElementById('catalogCategoryFilter');
       filter.innerHTML = "";
       config.categories.forEach(cat => {
@@ -326,30 +224,19 @@
 
       const grid = document.getElementById('catalogGrid');
       const q = state.catalogSearch.toLowerCase();
-      const cat = state.catalogCategory;
-
+      
       const filtered = allData.filter(item => {
-        const matchType = item.type === state.catalogType;
-        const matchSearch = item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
-        const matchCat = cat === 'all' || item.category === cat;
-        return matchType && matchSearch && matchCat;
+        return item.type === state.catalogType && (item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q));
       });
 
-      grid.innerHTML = "";
-      if (filtered.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">موردی یافت نشد.</p>';
-        return;
-      }
+      grid.innerHTML = filtered.length === 0 ? '<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">موردی یافت نشد.</p>' : "";
 
       filtered.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
           <div>
-            <div class="card-top">
-              <span class="tag">${item.category}</span>
-              <span class="price">${formatPrice(item.price)}</span>
-            </div>
+            <div class="card-top"><span class="tag">${item.category}</span><span class="price">${formatPrice(item.price)}</span></div>
             <h3 style="margin-top:10px;">${item.title}</h3>
             <p style="margin-top:6px;">${item.desc}</p>
           </div>
@@ -365,7 +252,6 @@
       const t = i18n[state.lang];
       document.documentElement.lang = state.lang;
       document.documentElement.dir = state.lang === "fa" ? "rtl" : "ltr";
-      
       document.getElementById('brandTitle').textContent = t.brand;
       document.getElementById('langToggle').textContent = t.langBtn;
       document.getElementById('openPublishBtn').textContent = t.publishBtn;
@@ -373,12 +259,8 @@
       document.getElementById('heroTitle').textContent = t.heroTitle;
       document.getElementById('heroDesc').textContent = t.heroDesc;
       document.getElementById('activeModuleTitle').textContent = t.modules[state.activeModule];
-      document.getElementById('footerText').textContent = t.footer;
     }
 
-    // ==========================================
-    // ۴. مدیریت نماها (Views)
-    // ==========================================
     function showHome() {
       state.currentView = "home";
       document.getElementById('homeView').classList.remove('hidden');
@@ -390,44 +272,15 @@
     function openCatalog(type) {
       state.currentView = "catalog";
       state.catalogType = type;
-      state.catalogSearch = "";
-      state.catalogCategory = "all";
-      
       document.getElementById('homeView').classList.add('hidden');
       document.getElementById('catalogView').classList.remove('hidden');
-      
-      document.getElementById('catalogSearch').value = "";
-      
       renderNav();
       renderCatalog();
     }
 
-    // ==========================================
-    // ۵. رویدادها
-    // ==========================================
-    document.getElementById('langToggle').onclick = () => {
-      state.lang = state.lang === "fa" ? "en" : "fa";
-      updateUI();
-      if (state.currentView === 'home') renderItems();
-      else renderCatalog();
-    };
+    document.getElementById('langToggle').onclick = () => { state.lang = state.lang === "fa" ? "en" : "fa"; updateUI(); if (state.currentView === 'home') renderItems(); else renderCatalog(); };
+    document.getElementById('catalogSearch').oninput = (e) => { state.catalogSearch = e.target.value; renderCatalog(); };
 
-    document.getElementById('searchInput').oninput = (e) => {
-      state.search = e.target.value;
-      renderItems();
-    };
-
-    document.getElementById('catalogSearch').oninput = (e) => {
-      state.catalogSearch = e.target.value;
-      renderCatalog();
-    };
-
-    document.getElementById('catalogCategoryFilter').onchange = (e) => {
-      state.catalogCategory = e.target.value;
-      renderCatalog();
-    };
-
-    // مقداردهی اولیه
     updateUI();
     showHome();
   </script>
