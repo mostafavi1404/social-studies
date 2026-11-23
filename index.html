@@ -10,7 +10,6 @@
   
   <style>
     :root {
-      /* تغییر رنگ پس‌زمینه کل سایت به خاکستری ملایم برای کاهش جیغ بودن */
       --bg: #eaeff5; 
       --surface: #ffffff; 
       --surface-alt: #f1f5f9; 
@@ -21,7 +20,7 @@
       --accent: #0d9488;
       --border: #cbd5e1; 
       --radius: 14px; 
-      --shadow: 0 4px 15px rgba(0, 0, 0, 0.04); /* سایه ملایم‌تر */
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.04); 
       --font-fa: "Vazirmatn", "system-ui", sans-serif; 
       --font-en: "Inter", "system-ui", sans-serif;
     }
@@ -30,7 +29,6 @@
     html[lang="en"] body { font-family: var(--font-en); font-size: 15px; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    /* پس‌زمینه کل سایت حالا خاکستری مایل به آبی است */
     body { background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
     .container { max-width: 1240px; margin: 0 auto; padding: 20px; }
 
@@ -52,7 +50,6 @@
     .nav-tab:hover { background: var(--surface-alt); color: var(--text); }
     .nav-tab.active { background: var(--primary); color: #fff; }
 
-    /* هیرو: برگشت به رنگ آبی نفتی تیره و شیک */
     .hero { margin: 22px 0; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #fff; border-radius: 20px; padding: 35px 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center; }
     .hero h1 { font-size: 1.9rem; line-height: 1.4; margin-bottom: 12px; font-weight: 800; }
     .hero p { opacity: 0.85; margin-bottom: 0; max-width: 800px; margin: 0 auto; font-size: 1.05rem; }
@@ -97,7 +94,6 @@
 
   <main class="container">
     
-    <!-- صفحه اصلی -->
     <div id="homeView">
       <section class="hero">
         <h1 id="heroTitle">پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست</h1>
@@ -112,7 +108,6 @@
       <div class="grid" id="itemsGrid"></div>
     </div>
 
-    <!-- صفحه کاتالوگ -->
     <div id="catalogView" class="hidden">
       <div class="section-head" style="margin-top: 0;">
         <h2 class="section-title" id="catalogTitle">آرشیو</h2>
@@ -120,7 +115,7 @@
       </div>
 
       <div class="toolbar">
-        <input class="input" id="catalogSearch" type="search" placeholder="جستجو در عنوان یا چکیده..." style="flex:1;min-width:220px;" />
+        <input class="input" id="catalogSearch" type="search" placeholder="جستجو..." style="flex:1;min-width:220px;" />
         <select id="catalogCategoryFilter" class="input"></select>
       </div>
 
@@ -136,18 +131,27 @@
   </footer>
 
   <script>
+    // دیتابیس مرکزی (شامل مقاله و کتاب)
     const allData = [
       { type: "research", category: "جامعه‌شناسی", titleFa: "تأثیر شبکه‌های اجتماعی بر سبک زندگی", titleEn: "Impact of Social Media on Lifestyle", descFa: "بررسی ابعاد مختلف اجتماعی و روانی...", descEn: "Examining social and psychological dimensions...", price: 0, link: "article-1.html" },
       { type: "research", category: "سیاست", titleFa: "تحلیل سرمایه اجتماعی در کلان‌شهرها", titleEn: "Analysis of Social Capital in Metropolises", descFa: "پژوهشی در مورد چگونگی شکل‌گیری اعتماد...", descEn: "Research on how trust is formed...", price: 0, link: "#" },
       { type: "education", category: "کارگاه", titleFa: "دوره روش تحقیق در مطالعات اجتماعی", titleEn: "Social Research Methodology Course", descFa: "برگزاری کلاس، تکالیف و ارزیابی مهارتی...", descEn: "Class delivery, assignments, and evaluation...", price: 1100000, link: "#" },
       { type: "statistics", category: "داده‌های شهری", titleFa: "مجموعه داده تحلیل شده پیمایش شهری", titleEn: "Analyzed Urban Survey Dataset", descFa: "انتشار و فروش داده تحلیل شده...", descEn: "Publication and sale of analyzed data...", price: 450000, link: "#" },
       { type: "conference", category: "همایش ملی", titleFa: "ثبت نام همایش جامعه شناسی", titleEn: "Sociology Conference Registration", descFa: "شرکت در همایش و دریافت گزارش...", descEn: "Attending the conference and receiving the report...", price: 550000, link: "#" },
+      { type: "books", category: "علوم سیاسی", titleFa: "کتاب توتالیتاریسم (هانا آرنت)", titleEn: "Totalitarianism (Hannah Arendt)", descFa: "ترجمه محسن ثلاثی - خاستگاه‌های توتالیتاریسم...", descEn: "Translated by Mohsen Salasi...", price: 0, link: "totalitarism-a1389.pdf" },
       { type: "books", category: "تألیف", titleFa: "کتاب نهادهای اجتماعی معاصر", titleEn: "Book: Contemporary Social Institutions", descFa: "عرضه کتاب و خلاصه تخصصی...", descEn: "Book supply and specialized summary...", price: 320000, link: "#" },
-      { type: "podcasts", category: "گفت‌وگو", titleFa: "پادکست تحولات اجتماعی", titleEn: "Social Changes Podcast", descFa: "تهیه و انتشار اپیزودهای تحلیلی...", descEn: "Production and release of analytical episodes...", price: 0, link: "#" }
+      { type: "podcasts", category: "گفت‌وگو", titleFa: "پادکست تحولات اجتماعی", titleEn: "Social Changes Podcast", descFa: "تهیه و انتشار اپیزودهای تحلیلی...", descEn: "Production and release of analytical episodes...", price: 0, link: "#" },
+      
+      // موارد جدید (مقاله و یادداشت)
+      { type: "articles", category: "شهرهای هوشمند", titleFa: "گزارش تحقیقاتی: بررسی تجارب عملیاتی شهرهای هوشمند", titleEn: "Research Report: Smart Cities Operational Experiences", descFa: "بررسی نمونه‌های واقعی و اجراشده در شهرهای مختلف جهان...", descEn: "Reviewing real-world smart city implementations...", price: 0, link: "article-1.html" },
+      { type: "notes", category: "یادداشت تحلیلی", titleFa: "یادداشت: نسبت جامعه‌شناسی و سیاست‌گذاری عمومی", titleEn: "Note: Sociology and Public Policy", descFa: "متن کوتاه تحلیلی درباره نقش پژوهش‌های اجتماعی در تصمیم‌گیری‌ها...", descEn: "A short analytical text on the role of social research in decision-making...", price: 0, link: "#" }
     ];
 
+    // تنظیمات تب‌های جدید
     const pageConfigs = {
       research: { titleFa: "آرشیو پژوهش‌ها", titleEn: "Research Archive", categoriesFa: ["همه موضوعات", "جامعه‌شناسی", "سیاست"], categoriesEn: ["All Categories", "Sociology", "Politics"] },
+      articles: { titleFa: "آرشیو مقالات", titleEn: "Articles Archive", categoriesFa: ["همه موضوعات", "شهرهای هوشمند", "مطالعات شهری"], categoriesEn: ["All Categories", "Smart Cities", "Urban Studies"] },
+      notes: { titleFa: "یادداشت‌های اجتماعی", titleEn: "Social Notes", categoriesFa: ["همه موضوعات", "یادداشت تحلیلی", "نقد و بررسی"], categoriesEn: ["All Categories", "Analytical Note", "Review"] },
       education: { titleFa: "دوره‌های آموزشی", titleEn: "Education Courses", categoriesFa: ["همه موضوعات", "کارگاه", "وبینار"], categoriesEn: ["All Categories", "Workshop", "Webinar"] },
       statistics: { titleFa: "آمار و داده‌ها", titleEn: "Statistics & Data", categoriesFa: ["همه موضوعات", "داده‌های شهری"], categoriesEn: ["All Categories", "Urban Data"] },
       conference: { titleFa: "همایش‌ها", titleEn: "Conferences", categoriesFa: ["همه موضوعات", "همایش ملی"], categoriesEn: ["All Categories", "National Conference"] },
@@ -166,16 +170,16 @@
         heroTitle: "پلتفرم یکپارچه پژوهش، آموزش، آمار، همایش، کتاب و پادکست",
         heroDesc: "با پشتیبانی هم‌زمان از فروش مستقیم و بازارچه کارمزدی محصولات کاربران، پنل شخصی و تغییر زبان فارسی و انگلیسی.",
         freeText: "رایگان", btnDetails: "مشاهده جزئیات &larr;", btnViewAll: "مشاهده همه", noItems: "موردی یافت نشد.", backToHome: "بازگشت به صفحه اصلی",
-        searchCatalog: "جستجو در عنوان یا چکیده...", footer: "© پلتفرم مطالعات اجتماعی - تمامی حقوق محفوظ است.",
-        modules: { research: "پژوهش", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
+        searchCatalog: "جستجو...", footer: "© پلتفرم مطالعات اجتماعی - تمامی حقوق محفوظ است.",
+        modules: { research: "پژوهش", articles: "مقاله", notes: "یادداشت اجتماعی", education: "آموزش", statistics: "آمار", conference: "همایش", books: "کتاب", podcasts: "پادکست" }
       },
       en: {
         brand: "Social Studies Platform", langBtn: "فارسی", publishBtn: "+ Publish / Sell", authBtn: "Account",
         heroTitle: "Unified Platform for Social Studies",
         heroDesc: "Supporting direct sales, creator commission items, personal dashboard, and bilingual UI.",
         freeText: "Free", btnDetails: "View Details &rarr;", btnViewAll: "View All", noItems: "No items found.", backToHome: "Back to Home",
-        searchCatalog: "Search in title or abstract...", footer: "© Social Studies Platform - All rights reserved.",
-        modules: { research: "Research", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
+        searchCatalog: "Search...", footer: "© Social Studies Platform - All rights reserved.",
+        modules: { research: "Research", articles: "Articles", notes: "Notes", education: "Education", statistics: "Statistics", conference: "Conference", books: "Books", podcasts: "Podcasts" }
       }
     };
 
@@ -201,7 +205,6 @@
     function renderItems() {
       const grid = document.getElementById('itemsGrid');
       const t = i18n[state.lang];
-      // فیلتر بر اساس ماژول فعال
       const list = allData.filter(item => item.type === state.activeModule).slice(0, 4);
       
       grid.innerHTML = list.length === 0 ? `<div class="panel"><p>${t.noItems}</p></div>` : "";
@@ -235,13 +238,11 @@
       document.getElementById('catalogSearch').placeholder = t.searchCatalog;
       document.getElementById('catalogSearch').value = state.catalogSearch;
 
-      // پر کردن فیلترها بر اساس زبان
       const filter = document.getElementById('catalogCategoryFilter');
       filter.innerHTML = "";
       const cats = state.lang === "fa" ? config.categoriesFa : config.categoriesEn;
       cats.forEach((cat, index) => {
         const opt = document.createElement('option');
-        // برای مقداردهی از ایندکس استفاده می‌کنیم تا در هر دو زبان منطق حفظ شود
         opt.value = index === 0 ? "all" : index; 
         opt.textContent = cat;
         filter.appendChild(opt);
@@ -251,7 +252,6 @@
       const q = state.catalogSearch.toLowerCase();
       
       const filtered = allData.filter(item => {
-        // فیلتر جستجو
         const matchSearch = (state.lang === "fa" ? item.titleFa : item.titleEn).toLowerCase().includes(q) || 
                             (state.lang === "fa" ? item.descFa : item.descEn).toLowerCase().includes(q);
         return item.type === state.catalogType && matchSearch;
@@ -293,7 +293,6 @@
       document.getElementById('activeModuleTitle').textContent = t.modules[state.activeModule];
       document.getElementById('footerText').textContent = t.footer;
       
-      // دکمه بازگشت در صفحه کاتالوگ
       const backBtn = document.querySelector('#catalogView .btn');
       if(backBtn) backBtn.textContent = t.backToHome;
     }
@@ -319,7 +318,6 @@
 
     document.getElementById('langToggle').onclick = () => { 
       state.lang = state.lang === "fa" ? "en" : "fa"; 
-      // رفرش کردن کل صفحه فعلی با زبان جدید
       if (state.currentView === 'home') showHome(); 
       else openCatalog(state.catalogType); 
     };
@@ -329,7 +327,6 @@
       renderCatalog(); 
     };
 
-    // شروع به کار
     showHome();
   </script>
 </body>
